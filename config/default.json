@@ -1,7 +1,7 @@
 {
     "App": {
         "database": {
-            "mongoUrl": "mongodb://localhost:27017/surf-forecast"
+            "mongoUrl": "mongodb://localhost:27017/surf-forecast?ssl=false"
         },
         "resources": {
             "StormGlass": {
@@ -11,3 +11,5 @@
         }
     }
 }
+
+// mongodb://localhost:27017/surf-forecast?readPreference=primary&appname=mongodb-vscode%200.4.2&ssl=false

@@ -15,7 +15,7 @@
   "homepage": "https://github.com/llsouzabr/weather-typerscript-api#readme",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/src/index.js",
+    "start": "yarn build && node dist/src/server.js",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check src/**/*.ts test/**/*.ts",
