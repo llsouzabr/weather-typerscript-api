@@ -1,10 +1,15 @@
 {
     "App": {
-      "resources": {
-        "StormGlass": {
-          "apiUrl": "https://api.stormglass.io/v2",
-          "apiToken": "do-not-hard-code"
+        "database": {
+            "mongoUrl": "mongodb://localhost:27017/surf-forecast?ssl=false"
+        },
+        "resources": {
+            "StormGlass": {
+                "apiUrl": "https://api.stormglass.io/v2",
+                "apiToken": "do-not-hard-code"
+            }
         }
-      }
     }
-  }
+}
+
+// mongodb://localhost:27017/surf-forecast?readPreference=primary&appname=mongodb-vscode%200.4.2&ssl=false
