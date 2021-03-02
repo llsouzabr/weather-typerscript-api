@@ -3,6 +3,8 @@ import { Server } from '@overnightjs/core'
 import bodyParser from 'body-parser';
 import { ForeCastController } from './controllers/forecast';
 import { Application } from 'express';
+import * as database from '@src/database';
+
 
 export class SetupServer extends Server {
 
@@ -24,8 +26,16 @@ export class SetupServer extends Server {
         this.addControllers([forecastController]);
     }
 
+    private async databaseSetup(): Promise<void> {
+        await database.connect();
+      }
+
     public getApp(): Application {
         return this.app;
     }
+
+    public async close(): Promise<void> {
+        await database.close();
+      }
 
 }
