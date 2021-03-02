@@ -16,5 +16,5 @@ export class ForeCastController {
     } catch (error) {
       res.status(500).send({ error: 'Something went wrong' });
     }
-  };
-};
+  }
+}

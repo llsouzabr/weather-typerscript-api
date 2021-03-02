@@ -74,7 +74,7 @@ export class StormGlass {
         throw new StormGlassResponseError (
           `Error: ${JSON.stringify(err.response.data)} Code: ${err.response.status}`
         )
-      };
+      }
 
       throw new ClientRequestError(err.message);
 
