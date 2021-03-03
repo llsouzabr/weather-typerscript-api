@@ -1,9 +1,9 @@
-import { Users } from "@src/models/users";
+import { User } from "@src/models/users";
 
 
 describe('Users functional tests', () => {
     beforeEach(async () => {
-        await Users.deleteMany({});
+        await User.deleteMany({});
       });
     describe('When creating a new user', () => {
         it('should succesfully creat a newuser', async() => {
