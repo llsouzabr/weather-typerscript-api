@@ -6,7 +6,7 @@ describe('Users functional tests', () => {
         await User.deleteMany({});
       });
     describe('When creating a new user', () => {
-        it('should succesfully creat a newuser with encrypted password', async() => {
+        it('should succesfully create a newuser with encrypted password', async() => {
             const newUser = {
                 name: 'John Doe',
                 email: 'john@mail.com',
