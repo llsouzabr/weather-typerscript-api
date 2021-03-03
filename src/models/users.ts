@@ -1,5 +1,5 @@
+import AuthService from '@src/services/auth';
 import mongoose, { Document, Model } from 'mongoose';
-import bcrypt from 'bcrypt';
 
 export interface User {
   _id?: string;
@@ -43,20 +43,12 @@ const schema = new mongoose.Schema(
     CUSTOM_VALIDATION.DUPLICATED
   );
 
-export async function hashPassword(password: string, salt = 10): Promise<string> {
-  return await bcrypt.hash(password, salt)
-};
-
-export async function comparePassword(password: string, hashedPassword: string): Promise<boolean> {
-  return bcrypt.compare(password, hashedPassword);
-};
-
 schema.pre<UserModel>('save', async function (): Promise<void> {
   if (!this.password || !this.isModified('password')) {
     return;
   }
   try {
-    const hashedPassword = await hashPassword(this.password);
+    const hashedPassword = await AuthService.hashPassword(this.password);
     this.password = hashedPassword;
   } catch (err) {
     console.error(`Error hashing the password for the user ${this.name}`, err);
