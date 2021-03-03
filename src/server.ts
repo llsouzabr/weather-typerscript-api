@@ -1,11 +1,11 @@
 import './util/module-alias';
-import { Server } from '@overnightjs/core'
-import bodyParser from 'body-parser';
-import { ForeCastController } from './controllers/forecast';
+import { Server } from '@overnightjs/core';
 import { Application } from 'express';
-import * as database from '@src/database';
-import { BeachesController } from './controllers/beaches';
+import bodyParser from 'body-parser';
 
+import { ForeCastController } from '@src/controllers/forecast';
+import * as database from '@src/database';
+import { BeachesController } from '@src/controllers/beaches';
 
 export class SetupServer extends Server {
 
@@ -13,10 +13,16 @@ export class SetupServer extends Server {
         super();
     }
 
-    public init(): void {
+    public async init(): Promise<void> {
         this.setupExpress();
         this.setupControllers();
-        this.databaseSetup();
+        await this.databaseSetup();
+    }
+
+    public start(): void {
+        this.app.listen(this.port, () => {
+            console.info('Server linstening on port: ' + this.port)
+        });
     }
 
     private setupExpress(): void {

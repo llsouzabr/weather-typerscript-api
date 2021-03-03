@@ -15,7 +15,7 @@
   "homepage": "https://github.com/llsouzabr/weather-typerscript-api#readme",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node dist/src/server.js",
+    "start": "yarn build && node dist/src/index.js",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check src/**/*.ts test/**/*.ts",
@@ -60,7 +60,8 @@
     "config": "^3.3.4",
     "express": "^4.17.1",
     "module-alias": "^2.2.2",
-    "mongoose": "^5.11.18",
+    "mongoose": "5.11.15",
+    "mongose": "^0.0.2-security",
     "path": "^0.12.7"
   }
 }
