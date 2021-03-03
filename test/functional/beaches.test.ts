@@ -1,4 +1,4 @@
-import { Beach } from "@src/models/beach";
+import { Beach, BeachPosition } from "@src/models/beach";
 
 describe('Beaches functional tests', () => {
   beforeAll(async () => await Beach.deleteMany({}));
@@ -8,9 +8,9 @@ describe('Beaches functional tests', () => {
           lat: -33.792726,
           lng: 151.289824,
           name: 'Manly',
-          position: 'E',
+          position: BeachPosition.E,
         };
-  
+      
         const response = await global.testRequest.post('/beaches').send(newBeach);
         expect(response.status).toBe(201);
         //Object containing matches the keys and values, even if includes other keys such as id.
@@ -37,5 +37,4 @@ describe('Beaches functional tests', () => {
     it.skip('should return 500 when there is any error other than validation error', async () => {
       //TODO think in a way to throw a 500
     });
-  
   });

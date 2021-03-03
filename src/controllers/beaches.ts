@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@overnightjs/core';
+import { Controller, Post } from '@overnightjs/core';
 import { Beach } from '@src/models/beach';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
