@@ -3,6 +3,7 @@ import { User } from '@src/models/users';
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { BaseController } from '@src/controllers';
+import AuthService from '@src/services/auth';
 
 @Controller('users')
 export class UsersController extends BaseController{
@@ -17,4 +18,25 @@ export class UsersController extends BaseController{
             // console.log(error)
         };
     };
+
+    @Post('authenticate')
+    public async authenticate(req: Request, res: Response): Promise<Response> {
+        const { email, password } = req.body;
+        const user = await User.findOne( { email });
+        if (!user) {
+            return res.status(401).send({
+                code: 401,
+                error: 'User not found!'
+            });
+        }
+        if(!(await AuthService.comparePassword(password, user.password))) {
+            return res.status(401).send({
+                code: 401,
+                error: 'Password does not match!'
+            });
+        } 
+        const token = AuthService.generateToken(user.toJSON())
+        return res.status(200).send({token: token})
+
+    }
 };
